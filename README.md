@@ -1,5 +1,8 @@
-# Inventory-Management-System-IMS-
-Final project of CMPSC 221
+# Inventory Management System (IMS) — Course Project
+
+This repository contains the coursework for **CMPSC 221** (Java Programming).  
+Team: Ava Iranmanesh, Akshit Nayyar, Syed Sarim Reza  
+Supervisor: Dr. Hussain  
 
 An inventory management system is a software application designed to handle and monitor all activities 
 related to stock and inventory within a business. It helps the inventory manager or staff to maintain a real-time 
