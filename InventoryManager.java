@@ -1,6 +1,6 @@
 package com.inventory.model;
 
-//another child ahh class
+//another child class
 public class InventoryManager extends User {
 
     public InventoryManager(int id, String name, String email) {

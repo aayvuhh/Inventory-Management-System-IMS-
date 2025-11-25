@@ -7,7 +7,7 @@ public class Item {
     protected String category;
     protected double unitPrice;
 
-    //constructurrssssss
+    //constructors
     public Item(String id, String name, String category, double unitPrice) {
         this.id = id;
         this.name = name;
@@ -15,7 +15,7 @@ public class Item {
         this.unitPrice = unitPrice;
     }
 
-    //ready, get-set(get it), go
+    //getters and setters
     public String getId() {
         return id;
     }

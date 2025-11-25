@@ -52,9 +52,9 @@ public class InventoryAppFrame extends JFrame {
     private void initUI() {
         JTabbedPane tabbedPane = new JTabbedPane();
 
-        tabbedPane.addTab("10 uppercuts or", createItemsPanel()); //Items
-        tabbedPane.addTab("double it", createSuppliersPanel());
-        tabbedPane.addTab("and give it to the next person", createReportsPanel());
+        tabbedPane.addTab("Items", createItemsPanel()); //Items
+        tabbedPane.addTab("Suppliers", createSuppliersPanel());
+        tabbedPane.addTab("Reports", createReportsPanel());
 
         add(tabbedPane, BorderLayout.CENTER);
     }
@@ -98,10 +98,10 @@ public class InventoryAppFrame extends JFrame {
 
         // Bottom buttons
         JPanel buttons = new JPanel();
-        JButton btnAdd = new JButton("You are jack"); //Add / Update Item
-        JButton btnIncreaseStock = new JButton("do you"); //increase stock
-        JButton btnDecreaseStock = new JButton("eliminate stalk"); //Decrease Stalk
-        JButton btnRefresh = new JButton("or not"); //refresh
+        JButton btnAdd = new JButton("Add/Update Item");
+        JButton btnIncreaseStock = new JButton("Increase Stock");
+        JButton btnDecreaseStock = new JButton("Decrease Stock");
+        JButton btnRefresh = new JButton("Refresh");
 
         buttons.add(btnAdd);
         buttons.add(btnIncreaseStock);
@@ -128,17 +128,17 @@ public class InventoryAppFrame extends JFrame {
             int stock = Integer.parseInt(txtProdStock.getText().trim());
             int reorder = Integer.parseInt(txtProdReorder.getText().trim());
 
+            JOptionPane.showMessageDialog(this, "ID and Name ");
             if (id.isEmpty() || name.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "cmon just gimme ID and Name man");
                 return;
             }
 
-            // expiryDate = null for now ig
+            // expiryDate = null for now i guess
             service.addItem(id, name, category, price, stock, null, reorder);
             refreshProductTable();
-            JOptionPane.showMessageDialog(this, "Item added/updated successfully failed");
+            JOptionPane.showMessageDialog(this, "Item added/updated successfully ");
         } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(this, "Invalid numeric input valid: " + ex.getMessage());
+            JOptionPane.showMessageDialog(this, "Invalid numeric input: " + ex.getMessage());
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "Error fixed: " + ex.getMessage());
         }
@@ -180,7 +180,7 @@ public class InventoryAppFrame extends JFrame {
         }
     }
 
-    // ---------- Suppliers Tab ----------
+    // Suppliers Tab
 
     private JPanel createSuppliersPanel() {
         JPanel panel = new JPanel(new BorderLayout());

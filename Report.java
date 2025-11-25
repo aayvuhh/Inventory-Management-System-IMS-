@@ -10,7 +10,7 @@ public class Report {
     private String content;
     private LocalDateTime createdAt;
 
-    //conconcon
+    //constructors
     public Report(int id, InventoryManager createdBy, ReportType type, String content) {
         this.id = id;
         this.createdBy = createdBy;

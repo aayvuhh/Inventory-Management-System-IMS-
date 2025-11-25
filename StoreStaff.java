@@ -1,6 +1,6 @@
 package com.inventory.model;
 
-//laid an egg this time
+//child class
 public class StoreStaff extends User {
 
     public StoreStaff(int id, String name, String email) {

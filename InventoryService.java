@@ -6,7 +6,6 @@ import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
 
-//Mr.Robot lied to me
 public class InventoryService {
 
     private Map<String, Product> products = new HashMap<>();
@@ -62,7 +61,7 @@ public class InventoryService {
                 .collect(Collectors.toList());
     }
 
-    // Drug Suppliers
+    // Suppliers
 
     public Supplier addSupplier(String name, String email, String phone) {
         Supplier supplier = new Supplier(nextSupplierId++, name, email, phone);
@@ -78,7 +77,7 @@ public class InventoryService {
         return suppliers.get(id);
     }
 
-    // Drug Customers
+    // Customers
 
     public Customer addCustomer(String name, String email, String phone) {
         Customer customer = new Customer(nextCustomerId++, name, email, phone);
@@ -90,7 +89,7 @@ public class InventoryService {
         return customers.get(id);
     }
 
-    // ---------- Purchase Orders ----------
+    // Purchase Orders
 
     public PurchaseOrder createPurchaseOrder(int supplierId) {
         Supplier supplier = suppliers.get(supplierId);
@@ -111,7 +110,7 @@ public class InventoryService {
     public void issueProducts(String productId, int quantity, int customerId) {
         Customer customer = customers.get(customerId);
         if (customer == null) {
-            throw new IllegalArgumentException("Customer dont exist bruh: " + customerId);
+            throw new IllegalArgumentException("Customer doesn't exist: " + customerId);
         }
         updateStock(productId, -quantity);
         // record sales transaction linked to customer in full system
@@ -120,7 +119,7 @@ public class InventoryService {
     public void returnProducts(String productId, int quantity, int customerId) {
         Customer customer = customers.get(customerId);
         if (customer == null) {
-            throw new IllegalArgumentException("Customer will not be found: " + customerId);
+            throw new IllegalArgumentException("Customer not be found: " + customerId);
         }
         updateStock(productId, quantity);
         // record return transaction in full system
@@ -161,11 +160,11 @@ public class InventoryService {
     // Demo Data
 
     public void loadDemoData() {
-        addSupplier("Pablo Escobar", "weed@yahoo.com", "911-911-9111");
-        addSupplier("Hitler", "theRealHitler@outlook.com", "999-111-2222");
+        addSupplier("Pablo Escobar", "weed123@yahoo.com", "911-911-9111");
+        addSupplier("Walmert", "theRealWalmart@outlook.com", "999-111-2222");
 
-        addItem("P001", "Jew", "Human", 21.22, 50, null, 10);
-        addItem("P002", "KSI", "Human", 0.99, 200, null, 30);
+        addItem("P001", "Hard Drive", "Electronics", 21.22, 50, null, 10);
+        addItem("P002", "Spoons", "Cutlery", 0.99, 200, null, 30);
         addItem("P003", "USB", "Electronics", 12.50, 20, null, 5);
 
         addCustomer("Batman", "alfreddabuTTler@gmail.com", "555-1234");

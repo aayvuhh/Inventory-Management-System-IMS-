@@ -1,13 +1,13 @@
 package com.inventory.model;
 
-//drugs supplier
+//Suppliers
 public class Supplier {
     private int id;
     private String name;
     private String contactEmail;
     private String phone;
 
-    //constructor
+    //constructors
     public Supplier(int id, String name, String contactEmail, String phone) {
         this.id = id;
         this.name = name;
@@ -15,7 +15,7 @@ public class Supplier {
         this.phone = phone;
     }
 
-    //get set
+    //getters setters
     public int getId() {
         return id;
     }

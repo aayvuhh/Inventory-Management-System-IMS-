@@ -13,7 +13,7 @@ public class PurchaseOrder {
     private OrderStatus status;
     private List<OrderItem> items = new ArrayList<>();
 
-    //con(man)structor
+    //constructor
     public PurchaseOrder(int id, Supplier supplier, InventoryManager createdBy) {
         this.id = id;
         this.supplier = supplier;
@@ -22,7 +22,7 @@ public class PurchaseOrder {
         this.status = OrderStatus.CREATED;
     }
 
-    //get get set set
+    //getters and setters
     public int getId() {
         return id;
     }
