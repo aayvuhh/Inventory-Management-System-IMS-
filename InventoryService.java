@@ -204,6 +204,15 @@ public class InventoryService {
         return customerDAO.getCustomerById(customerId);
     }
 
+    /**
+     * Retrieves all customers from the database.
+     *
+     * @return List of all customers
+     */
+    public List<Customer> getAllCustomers() {
+        return customerDAO.getAllCustomers();
+    }
+
     // ==================== PURCHASE ORDERS ====================
 
     /**
