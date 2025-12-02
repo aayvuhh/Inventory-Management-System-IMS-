@@ -24,7 +24,9 @@ This Inventory Management System (IMS) is a Java-based desktop application that 
 ```
 Inventory-Management-System-IMS-/
 ├── lib/
-│   └── sqlite-jdbc-3.45.0.0.jar     # SQLite JDBC driver
+│   ├── sqlite-jdbc-3.45.0.0.jar     # SQLite JDBC driver
+│   ├── slf4j-api-2.0.9.jar          # SLF4J API (required by SQLite JDBC)
+│   └── slf4j-simple-2.0.9.jar       # SLF4J Simple implementation
 ├── database/
 │   ├── DatabaseManager.java          # Database connection manager
 │   ├── ProductDAO.java                # Product database operations
@@ -67,22 +69,22 @@ cd Inventory-Management-System-IMS-
 
 #### Step 2: Compile All Java Files
 ```bash
-javac -cp ".:lib/sqlite-jdbc-3.45.0.0.jar" *.java database/*.java
+javac -cp ".:lib/sqlite-jdbc-3.45.0.0.jar:lib/slf4j-api-2.0.9.jar:lib/slf4j-simple-2.0.9.jar" *.java database/*.java
 ```
 
 **Windows Users**: Use semicolon instead of colon:
 ```cmd
-javac -cp ".;lib/sqlite-jdbc-3.45.0.0.jar" *.java database/*.java
+javac -cp ".;lib/sqlite-jdbc-3.45.0.0.jar;lib/slf4j-api-2.0.9.jar;lib/slf4j-simple-2.0.9.jar" *.java database/*.java
 ```
 
 #### Step 3: Run the Application
 ```bash
-java -cp ".:lib/sqlite-jdbc-3.45.0.0.jar" com.inventory.Main
+java -cp ".:lib/sqlite-jdbc-3.45.0.0.jar:lib/slf4j-api-2.0.9.jar:lib/slf4j-simple-2.0.9.jar" com.inventory.Main
 ```
 
 **Windows Users**:
 ```cmd
-java -cp ".;lib/sqlite-jdbc-3.45.0.0.jar" com.inventory.Main
+java -cp ".;lib/sqlite-jdbc-3.45.0.0.jar;lib/slf4j-api-2.0.9.jar;lib/slf4j-simple-2.0.9.jar" com.inventory.Main
 ```
 
 ---
@@ -94,10 +96,14 @@ java -cp ".;lib/sqlite-jdbc-3.45.0.0.jar" com.inventory.Main
    - Select `File > Open`
    - Navigate to the project directory and click `OK`
 
-2. **Add SQLite Library**
-   - Right-click on `lib/sqlite-jdbc-3.45.0.0.jar`
-   - Select `Add as Library`
+2. **Add Required Libraries**
+   - Right-click on the `lib` folder
+   - Select `Add as Library` (this will add all JAR files in the folder)
    - Click `OK`
+   - Alternatively, add each JAR file individually:
+     - `lib/sqlite-jdbc-3.45.0.0.jar`
+     - `lib/slf4j-api-2.0.9.jar`
+     - `lib/slf4j-simple-2.0.9.jar`
 
 3. **Configure Run Configuration**
    - Go to `Run > Edit Configurations`
@@ -117,11 +123,15 @@ java -cp ".;lib/sqlite-jdbc-3.45.0.0.jar" com.inventory.Main
    - Select `File > Import > Existing Projects into Workspace`
    - Browse to the project directory and click `Finish`
 
-2. **Add SQLite Library**
+2. **Add Required Libraries**
    - Right-click on the project in Package Explorer
    - Select `Build Path > Configure Build Path`
    - Click `Add External JARs`
-   - Navigate to `lib/sqlite-jdbc-3.45.0.0.jar` and click `Open`
+   - Navigate to the `lib` folder and select all JAR files:
+     - `sqlite-jdbc-3.45.0.0.jar`
+     - `slf4j-api-2.0.9.jar`
+     - `slf4j-simple-2.0.9.jar`
+   - Click `Open`
    - Click `Apply and Close`
 
 3. **Run the Application**
@@ -191,12 +201,15 @@ The application automatically loads demo data on first run, including:
 
 ## Troubleshooting
 
-### Issue: "ClassNotFoundException: org.sqlite.JDBC"
-**Solution**: Ensure `sqlite-jdbc-3.45.0.0.jar` is in the classpath when compiling and running.
+### Issue: "ClassNotFoundException: org.sqlite.JDBC" or "NoClassDefFoundError: org/slf4j/LoggerFactory"
+**Solution**: Ensure all required JAR files are in the classpath when compiling and running:
+- `lib/sqlite-jdbc-3.45.0.0.jar`
+- `lib/slf4j-api-2.0.9.jar`
+- `lib/slf4j-simple-2.0.9.jar`
 
 ### Issue: "Database connection failed"
 **Solution**:
-- Check that `lib/sqlite-jdbc-3.45.0.0.jar` exists
+- Check that all library files exist in the `lib/` directory
 - Ensure you have write permissions in the project directory
 - Verify Java version is 11 or higher
 
