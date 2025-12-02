@@ -6,12 +6,16 @@
 *.db-journal
 
 # IDE specific files
-.idea/
+.idea/*
+!.idea/modules.xml
+!.idea/misc.xml
 .vscode/
-*.iml
 .classpath
 .project
 .settings/
+
+# Keep module file for library configuration
+!IMSS.iml
 
 # Build directories
 bin/
